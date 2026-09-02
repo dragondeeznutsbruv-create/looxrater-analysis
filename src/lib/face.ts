@@ -185,7 +185,7 @@ export function analyseLandmarks(raw: Pt[], width: number, height: number): Anal
       unit: "% mean deviation",
       reference: 0,
       conformity: Math.max(0, Math.min(100, Math.round((100 - thirdsDev * 9) * 10) / 10)),
-      description: `Upper ${thirds[0].toFixed(1)}% · middle ${thirds[1].toFixed(1)}% · lower ${thirds[2].toFixed(1)}%. The canon divides the face into three equal bands.`,
+      description: `Upper ${(thirds[0] ?? 0).toFixed(1)}% · middle ${(thirds[1] ?? 0).toFixed(1)}% · lower ${(thirds[2] ?? 0).toFixed(1)}%. The canon divides the face into three equal bands.`,
     },
     {
       key: "fifths",
