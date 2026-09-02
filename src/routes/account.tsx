@@ -85,16 +85,16 @@ function Account() {
       .from("profiles")
       .upsert({ id: session.user.id, display_name: name });
     setSavingName(false);
-    if (error) return toast.error("Could not save name");
+    if (error) { toast.error("Could not save name"); return; }
     toast.success("Saved");
   }
 
   async function deletePhotos() {
     if (!reports) return;
     const paths = reports.map((r) => r.photo_path).filter(Boolean) as string[];
-    if (!paths.length) return toast.info("No stored photos");
+    if (!paths.length) { toast.info("No stored photos"); return; }
     const { error } = await supabase.storage.from("photos").remove(paths);
-    if (error) return toast.error("Could not delete photos");
+    if (error) { toast.error("Could not delete photos"); return; }
     await supabase
       .from("reports")
       .update({ photo_path: null })
@@ -112,7 +112,7 @@ function Account() {
       .from("reports")
       .update({ is_public: false })
       .eq("user_id", session.user.id);
-    if (error) return toast.error("Could not update sharing");
+    if (error) { toast.error("Could not update sharing"); return; }
     qc.invalidateQueries({ queryKey: ["reports", session?.user.id] });
     toast.success("All share links disabled");
   }
@@ -120,7 +120,7 @@ function Account() {
   async function deleteReport(row: Row) {
     if (row.photo_path) await supabase.storage.from("photos").remove([row.photo_path]);
     const { error } = await supabase.from("reports").delete().eq("id", row.id);
-    if (error) return toast.error("Could not delete report");
+    if (error) { toast.error("Could not delete report"); return; }
     qc.invalidateQueries({ queryKey: ["reports", session?.user.id] });
     toast.success("Report deleted");
   }

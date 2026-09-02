@@ -82,7 +82,7 @@ function ReportPage() {
   async function togglePublic(next: boolean) {
     if (!report) return;
     const { error } = await supabase.from("reports").update({ is_public: next }).eq("id", report.id);
-    if (error) return toast.error("Could not update sharing");
+    if (error) { toast.error("Could not update sharing"); return; }
     qc.setQueryData(["report", id], { ...report, is_public: next });
     toast.success(next ? "Share link is live" : "Share link disabled");
   }

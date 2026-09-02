@@ -34,7 +34,7 @@ export function UnlockSheet({
     setBusy(true);
     const { error } = await supabase.from("reports").update({ unlocked: true }).eq("id", reportId);
     setBusy(false);
-    if (error) return toast.error("Could not unlock this report");
+    if (error) { toast.error("Could not unlock this report"); return; }
     toast.success("Full report unlocked");
     onUnlocked();
     onOpenChange(false);
