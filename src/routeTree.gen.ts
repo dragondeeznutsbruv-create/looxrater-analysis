@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as AnalyzeRouteImport } from './routes/analyze'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as MethodRouteImport } from './routes/method'
@@ -19,6 +20,11 @@ import { Route as SSlugRouteImport } from './routes/s.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalyzeRoute = AnalyzeRouteImport.update({
@@ -49,6 +55,7 @@ const SSlugRoute = SSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/analyze': typeof AnalyzeRoute
   '/auth': typeof AuthRoute
   '/method': typeof MethodRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/analyze': typeof AnalyzeRoute
   '/auth': typeof AuthRoute
   '/method': typeof MethodRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/analyze': typeof AnalyzeRoute
   '/auth': typeof AuthRoute
   '/method': typeof MethodRoute
@@ -74,12 +83,27 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/analyze' | '/auth' | '/method' | '/report/$id' | '/s/$slug'
+  fullPaths:
+    | '/'
+    | '/account'
+    | '/analyze'
+    | '/auth'
+    | '/method'
+    | '/report/$id'
+    | '/s/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/analyze' | '/auth' | '/method' | '/report/$id' | '/s/$slug'
+  to:
+    | '/'
+    | '/account'
+    | '/analyze'
+    | '/auth'
+    | '/method'
+    | '/report/$id'
+    | '/s/$slug'
   id:
     | '__root__'
     | '/'
+    | '/account'
     | '/analyze'
     | '/auth'
     | '/method'
@@ -89,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccountRoute: typeof AccountRoute
   AnalyzeRoute: typeof AnalyzeRoute
   AuthRoute: typeof AuthRoute
   MethodRoute: typeof MethodRoute
@@ -103,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analyze': {
@@ -145,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccountRoute: AccountRoute,
   AnalyzeRoute: AnalyzeRoute,
   AuthRoute: AuthRoute,
   MethodRoute: MethodRoute,
