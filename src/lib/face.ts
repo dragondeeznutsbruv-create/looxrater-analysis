@@ -104,7 +104,7 @@ export function analyseLandmarks(raw: Pt[], width: number, height: number): Anal
   const g = (i: number) => p[i];
 
   const faceWidth = dist(g(I.faceL), g(I.faceR));
-  const faceHeight = dist(g(I.trichion), g(I.menton));
+  
 
   // --- Facial thirds -------------------------------------------------------
   const upper = Math.abs(g(I.glabella).y - g(I.trichion).y);
