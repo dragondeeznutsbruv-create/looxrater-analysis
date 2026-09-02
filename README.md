@@ -1,14 +1,16 @@
-# Welcome to your Lovable project
+# Looxrater Analysis
+
+Build a mobile-first web application called Looxrater. It analyzes adult facial photographs using deterministic facial-landmark measurements rather than AI attractiveness judgments. Users upload a front-facing photograph, the application detects facial landmarks, calculates predefined facial proportions and symmetry measurements, and displays an appearance-analysis report. Include a landing page, photo upload, analysis screen, results dashboard, user accounts, database, payment system, privacy controls, and a shareable results card. Do not claim that the score is an objective measurement of attractiveness. Make the design minimalist, premium and highly mobile-friendly.
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/94ee02f3-d1be-464b-af4a-1c669f47792f).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +22,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
