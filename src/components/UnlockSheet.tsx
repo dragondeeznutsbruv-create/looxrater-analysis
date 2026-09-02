@@ -30,7 +30,7 @@ export function UnlockSheet({
 }) {
   const [busy, setBusy] = useState(false);
 
-  async function unlock() {
+  async function unlock(): Promise<void> {
     setBusy(true);
     const { error } = await supabase.from("reports").update({ unlocked: true }).eq("id", reportId);
     setBusy(false);
