@@ -101,7 +101,7 @@ const PAIRS: Array<[number, number]> = [
 export function analyseLandmarks(raw: Pt[], width: number, height: number): AnalysisResult {
   // Work in pixel space so ratios are geometrically meaningful.
   const p = raw.map((l) => ({ x: l.x * width, y: l.y * height }));
-  const g = (i: number) => p[i];
+  const g = (i: number): Pt => p[i] ?? { x: 0, y: 0 };
 
   const faceWidth = dist(g(I.faceL), g(I.faceR));
   
