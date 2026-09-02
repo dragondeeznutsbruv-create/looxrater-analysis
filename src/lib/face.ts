@@ -120,7 +120,7 @@ export function analyseLandmarks(raw: Pt[], width: number, height: number): Anal
   );
   const sorted = [...xs].sort((a, b) => a - b);
   const spans: number[] = [];
-  for (let i = 1; i < sorted.length; i++) spans.push(sorted[i] - sorted[i - 1]);
+  for (let i = 1; i < sorted.length; i++) spans.push((sorted[i] ?? 0) - (sorted[i - 1] ?? 0));
   const spanTotal = spans.reduce((a, b) => a + b, 0) || 1;
   const fifths = spans.map((s) => (s / spanTotal) * 100);
   const fifthsDev = fifths.reduce((s, v) => s + Math.abs(v - 20), 0) / fifths.length;
