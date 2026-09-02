@@ -281,10 +281,9 @@ export function analyseLandmarks(raw: Pt[], width: number, height: number): Anal
     landmarkCount: raw.length,
     imageWidth: width,
     imageHeight: height,
-    // faceHeight retained for future vertical metrics
-    ...(faceHeight ? {} : {}),
   };
 }
+
 
 export function band(score: number): string {
   if (score >= 85) return "Very close to canon";
