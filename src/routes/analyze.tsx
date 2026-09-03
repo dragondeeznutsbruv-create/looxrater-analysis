@@ -100,7 +100,7 @@ function Analyze() {
           user_id: session.user.id,
           photo_path: photoPath,
           harmony_score: result.harmony,
-          metrics: result as unknown as Record<string, unknown>,
+          metrics: JSON.parse(JSON.stringify(result)) as Json,
         })
         .select("id")
         .single();
