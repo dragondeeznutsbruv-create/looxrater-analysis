@@ -6,6 +6,7 @@ import { Shell, Disclaimer } from "@/components/Shell";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/useAuth";
 import { analyseLandmarks, getLandmarker } from "@/lib/face";
+import type { Json } from "@/integrations/supabase/types";
 
 export const Route = createFileRoute("/analyze")({
   head: () => ({
