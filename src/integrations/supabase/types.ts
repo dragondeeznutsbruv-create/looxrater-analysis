@@ -40,6 +40,7 @@ export type Database = {
           is_public: boolean
           metrics: Json
           photo_path: string | null
+          share_expires_at: string | null
           share_slug: string
           unlocked: boolean
           user_id: string
@@ -51,6 +52,7 @@ export type Database = {
           is_public?: boolean
           metrics?: Json
           photo_path?: string | null
+          share_expires_at?: string | null
           share_slug?: string
           unlocked?: boolean
           user_id: string
@@ -62,6 +64,7 @@ export type Database = {
           is_public?: boolean
           metrics?: Json
           photo_path?: string | null
+          share_expires_at?: string | null
           share_slug?: string
           unlocked?: boolean
           user_id?: string
